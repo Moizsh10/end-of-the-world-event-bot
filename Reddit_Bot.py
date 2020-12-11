@@ -45,28 +45,26 @@ def main():
 
 def botReply(comment):
     """Makes sure comment hasn't been previously replied to"""
-    if comment.id in commentRecord:
-        # print(f"Already Replied to comment {comment.id}")
-    else:
-        if keyphrase in comment.body:
-            try:
-                # Adds comment's ID to the record file to avoid repeated replies
-                with open("commentRecord.txt", "a") as file:
-                    file.write(f"{comment.id}\n")
-                    # print(f"Added a new comment ID: {comment.id}")
+    # print(f"Already Replied to comment {comment.id}")
+    if keyphrase in comment.body:
+        try:
+            # Adds comment's ID to the record file to avoid repeated replies
+            with open("commentRecord.txt", "a") as file:
+                file.write(f"{comment.id}\n")
+                # print(f"Added a new comment ID: {comment.id}")
 
-                # Updates the commentRecord Set
-                with open("commentRecord.txt", encoding="Latin-1") as file:
-                    fileLst = file.readlines()
-                    for line in fileLst:
-                        commentRecord.add(line.rstrip())
-                    print(f"{commentRecord}")
+            # Updates the commentRecord Set
+            with open("commentRecord.txt", encoding="Latin-1") as file:
+                fileLst = file.readlines()
+                for line in fileLst:
+                    commentRecord.add(line.rstrip())
+                print(f"{commentRecord}")
 
-                # Replies to the comment
-                comment.reply(f"You're looking pretty dapper yourself {comment.author}!")
-                print("Replied to user!\n")
-            except:
-                print("Invoked too frequently")
+            # Replies to the comment
+            comment.reply(f"You're looking pretty dapper yourself {comment.author}!")
+            print("Replied to user!\n")
+        except:
+            print("Invoked too frequently")
     return
 
 
