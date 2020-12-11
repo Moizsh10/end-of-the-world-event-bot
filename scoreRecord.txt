@@ -1,0 +1,4 @@
+Infection:
+65
+Cure:
+60
