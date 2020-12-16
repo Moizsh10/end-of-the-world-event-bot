@@ -1,6 +1,7 @@
 import threading
 import praw
 import time
+import random
 
 subreddits = ['BotsAndCSS']
 flair_list = ["13", "14", "15", "16", "17", "18", "19", "OLD"]
@@ -33,6 +34,9 @@ def main():
 
     # Loop to run program and switch between Lockdown and Explore
     while True:
+        # Random values of time to spice up gameplay
+        randLong = random.randint(2400, 3000)   # 40 - 50 mins
+        randShort = random.randint(180, 240)    # 3 - 4 mins
         # Activates lockdown
         lockdownOn = True
         lockdown(reddit)
